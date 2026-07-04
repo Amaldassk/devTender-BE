@@ -65,7 +65,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.getJWT = function(){
     const user = this;
-    return jwt.sign({_id:user._id},"DEV@TINDER06",{expiresIn:"1d"});
+    return jwt.sign({_id:user._id},process.env.SECRET_KEY,{expiresIn:"1d"});
 }
 
 userSchema.methods.validatePassword = function(passwordInputByUser){
